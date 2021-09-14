@@ -60,4 +60,12 @@ $dark-color: #000;
 .input-field {
   display: flex;
   justify-content: space-between;
+  @media (max-width: 480px) {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.form-date {
+    width: 100%;
 }
