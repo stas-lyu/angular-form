@@ -42,6 +42,9 @@ $dark-color: #000;
 
 .hobbies mat-form-field{
   width: 50%;
+  @media (max-width: 420px) {
+    width: 100%;
+  }
 }
 
 .hobbies-field {
