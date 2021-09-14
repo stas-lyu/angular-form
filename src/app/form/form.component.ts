@@ -23,8 +23,8 @@ export class FormComponent implements OnInit {
     {label: 'duration', placeholder: 'how long have you been doing this hobby', value: 'duration'},
   ]
   hobbiesGroup = new FormGroup({
-    first: new FormControl(''),
-    second: new FormControl('')
+    first: new FormControl('', [Validators.required]),
+    second: new FormControl('', [Validators.required])
   });
 
   hobbies: any[] = []
@@ -96,7 +96,7 @@ export class FormComponent implements OnInit {
       email: this.emailControl.value,
       hobby: this.hobbies,
     }
-    alert(JSON.stringify(data))
+    console.log(data)
   }
 
   setSettings(formData: any[]) {

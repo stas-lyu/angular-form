@@ -2,7 +2,7 @@ $light-color: #fff;
 $dark-color: #000;
 
 .form {
-  background-color: $dark-color;
+  background: radial-gradient(circle, #22c1c347 0%, #000000ab 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +11,10 @@ $dark-color: #000;
   margin: 0 auto;
   padding: 1rem;
   border-radius: 12px;
+}
+
+.mat-error {
+  color: #c70f0fb8;
 }
 
 .mat-input-element {
@@ -67,4 +71,10 @@ $dark-color: #000;
 
 .form-date {
     width: 100%;
+}
+
+.hobbies-close_btn {
+  min-width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
