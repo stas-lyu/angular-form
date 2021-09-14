@@ -1,0 +1,66 @@
+<form class="form" [formGroup]="hobbiesGroup">
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Your name*</mat-label>
+    <input [formControl]="nameControl" matInput placeholder="Ivan" value="">
+    <mat-error *ngIf="nameControl.hasError('required')">Enter your first name</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Your surname*</mat-label>
+    <input name="lastName" [formControl]="surnameControl" matInput placeholder="Ivanov" value="">
+    <mat-error *ngIf="surnameControl.hasError('required')">Enter your last name</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Your email*</mat-label>
+    <input [formControl]="$any(emailControl)" matInput placeholder="example@mail.com" value="">
+    <mat-error *ngIf="emailControl.hasError('required')">Enter your email</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="example-form-field">
+    <mat-label>Date of birthday</mat-label>
+    <input [formControl]="datepickerControl" name="dateOfBirth" matInput [matDatepicker]="datepicker">
+    <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+    <mat-datepicker #datepicker>
+      <mat-datepicker-actions>
+        <button mat-button matDatepickerCancel>Cancel</button>
+        <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+      </mat-datepicker-actions>
+    </mat-datepicker>
+    <mat-error *ngIf="datepickerControl.hasError('required')">Enter your date of birthday</mat-error>
+  </mat-form-field>
+  <div class="input-field">
+    <mat-form-field appearance="fill">
+      <mat-label>Technology</mat-label>
+      <mat-select [formControl]="technologyControl" required>
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let item of technologies | keyvalue" [value]="item.key">
+          {{item.key}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="technologyControl.hasError('required')">Please choose an technology</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Technology version</mat-label>
+      <mat-select [disabled]="isDisabled" [formControl]="versionControl" required>
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let item of technologyVersion" [value]="item">
+          {{item}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="versionControl.hasError('required')">Please choose an technology version</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="hobbies">
+    <mat-form-field class="example-full-width" appearance="fill" *ngFor="let data of formData">
+      <mat-label>{{data.label}}</mat-label>
+      <input type="text" formControlName="{{data.value}}" matInput placeholder="{{data.placeholder}}"
+             value="">
+      <mat-error *ngIf="hobbiesNameControl.hasError('required')">Enter your hobbies</mat-error>
+    </mat-form-field>
+  </div>
+  <button type="button" mat-mini-fab (click)="addHobbiesField()">+</button>
+  <button id="addHobbiesBtn" mat-flat-button (click)="onSubmit()">Submit Form</button>
+</form>
